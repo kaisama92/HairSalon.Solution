@@ -1,0 +1,14 @@
+@{
+  Layout = "_Layout";
+}
+
+@model HairSalon.Models.Client
+
+<h2 style="color: red;">You are about to remove @Html.DisplayFor(model => model.Name) from your client list!!!</h2>
+
+@using (Html.BeginForm())
+{
+  <input type="submit" value="Delete?"/>
+}
+
+@Html.ActionLink("Cancel", "Index")
