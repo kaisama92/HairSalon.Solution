@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Collections.Generic;
 using HairSalon.Models;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace HairSalon.Controllers
 {
@@ -32,7 +33,7 @@ namespace HairSalon.Controllers
     [HttpPost]
     public ActionResult Create(Client client)
     {
-      if (client.CategoryId == 0)
+      if (client.ClientId == 0)
       {
         return RedirectToAction();
       }
@@ -47,13 +48,13 @@ namespace HairSalon.Controllers
     {
       Client thisClient = _db.Clients
                               .Include(client => client.Stylist)
-                              .FirstOrDefault(client => client.ClientsId);
+                              .FirstOrDefault(client => client.ClientId == id);
       return View(thisClient);
     }
   
     public ActionResult Edit(int id)
     {
-      client thisClient = _db.Clients.FirstOrDefault(client => client.ClientsId == id);
+      Client thisClient = _db.Clients.FirstOrDefault(client => client.ClientId == id);
       ViewBag.StylistId = new SelectList(_db.Stylists, "StylistId", "Name");
       return View(thisClient);
     }
@@ -69,7 +70,7 @@ namespace HairSalon.Controllers
     public ActionResult Delete(int id)
     {
       Client thisClient = _db.Clients.FirstOrDefault(client => client.ClientId == id);
-      return View(thisItem);
+      return View(thisClient);
     }
 
     [HttpPost]

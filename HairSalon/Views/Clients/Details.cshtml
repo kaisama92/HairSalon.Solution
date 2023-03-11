@@ -9,6 +9,6 @@
 <h4>@Html.DisplayNameFor(model => model.Pronouns): @Html.DisplayFor(model => model.Pronouns)</h4>
 <h4>@Html.DisplayNameFor(model => model.Stylist): @Html.DisplayFor(model => model.Stylist)</h4>
 
-<p>@Html.ActionLink($"Edit {model => model.Name}", "Edit", new {id = Model.ClientId })</p>
+<p>@Html.ActionLink($"Edit {Model.Name}", "Edit", new {id = Model.ClientId })</p>
 <p>@Html.ActionLink("Delete", "Delete", new { id = Model.ClientId })</p>
 <p>@Html.ActionLink("All Clients", "Index")</p>
